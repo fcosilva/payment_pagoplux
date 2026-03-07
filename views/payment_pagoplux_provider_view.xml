@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">PagoPlux Payment</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="after">
+                <group name="provider_credentials" invisible="code != 'pagoplux'">
+                    <field name="paybox_remail"
+                    string="Paybox Remail"
+                    required="code == 'pagoplux' and state != 'disabled'"/>
+                    <field name="paybox_rename"
+                    string="Paybox Rename"
+                    required="code == 'pagoplux' and state != 'disabled'"/>
+                </group>
+            </group>
+            
+        </field> 
+
+    </record>
+</odoo>

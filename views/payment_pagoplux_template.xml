@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inline_form_pagoplux">
+        <input type='hidden' id="data_id" name='session_id' t-att-value='session_id'/>
+        <input type="hidden" id="reference" name="reference" t-att-value="reference"/>
+        <input type="hidden" id="PayboxAmount"  name="PayboxAmount" t-att-value="amount" />
+        <input type="hidden" id="PartnerId" name="PartnerId" t-att-value="partner_id"></input>
+        <input type="hidden" id="OrdenId" name="OrdenId" t-att-value="orden_id"></input>
+        <!--Datos cliente-->
+        
+        <input type="hidden" id="PartnerEmail" name="PartnerEmail" t-att-value="partner.email if partner else ''"></input>
+        <input type="hidden" id="PartnerName" name="PartnerName" t-att-value="partner.name if partner else ''"></input>
+        
+        <input t-if="return_url" type="hidden" name="return_url" t-att-value="return_url"/>   
+    </template>
+
+    <template id="pagoplux_s2s_form">
+        <input type="hidden" id="data_id2" name="acquirer_id" t-att-value="id"/>
+        <input type="hidden" name="currency_id" t-att-value="currency_id"/>
+        <input t-if="return_url" type="hidden" name="return_url" t-att-value="return_url"/>
+        <input t-if="partner_id" type="hidden" name="partner_id" t-att-value="partner_id"/>
+
+        <div id="payment-form">
+            <div id="card-element" class="m-3"/>
+            <div id="card-errors" class="m-3 text-danger"/>
+        </div>
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <input type="hidden" name="data_set" t-att-data-action-url="tx_url"/>
+        <t t-if="return_url">
+            <input type="hidden" name="return_url" t-att-value="return_url"/>
+        </t>
+        <input type="hidden" name="reference" t-att-value="reference"/>
+        <input type="hidden" name="amount" t-att-value="amount" />
+        <input type="hidden" name="cardInfo" t-att-value="cardInfo"/>
+        <input type="hidden" name="cardIssuer" t-att-value="cardIssuer"/>
+        <input type="hidden" name="cardType" t-att-value="cardType"/>
+        <input type="hidden" name="clientID" t-att-value="clientID"/>
+        <input type="hidden" name="clientName" t-att-value="clientName"/>
+        <input type="hidden" name="fecha" t-att-value="fecha"/>
+        <input type="hidden" name="id_transaccion" t-att-value="id_transaccion"/>
+        <input type="hidden" name="state_ppx" t-att-value="state_ppx"/>
+        <input type="hidden" name="token" t-att-value="token"/>
+        <input type="hidden" name='currency' t-att-value='currency.name'/>
+
+    </template>
+
+    <template id="assets_frontend">
+            <script type="text/javascript" src="static/src/js/ppx_payment_form.js"/>
+    </template>
+
+</odoo>
+

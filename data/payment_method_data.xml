@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_method_pagoplux" model="payment.method">
+        <field name="name">Pagoplux</field>
+        <field name="code">pagoplux</field>
+        <field name="sequence">10</field>
+        <field name="active">False</field>
+        <field name="image" type="base64" file="payment/static/img/card.png"/>
+        <field name="support_tokenization">True</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund">partial</field>
+        <field name="l10n_ec_sri_payment_id" eval="ref('l10n_ec.P19')"/>
+    </record>
+
+    <record id="payment_method_visa_pagoplux" model="payment.method">
+        <field name="name">VISA Pagoplux</field>
+        <field name="code">visapagoplux</field>
+        <field name="primary_payment_method_id" eval="ref('payment_method_pagoplux')"/>
+        <field name="sequence">1000</field>
+        <field name="active">False</field>
+        <field name="image" type="base64" file="payment/static/img/visa.png"/>
+    </record>
+
+    <record id="payment_method_mastercard_pagoplux" model="payment.method">
+        <field name="name">MasterCard Pagoplux</field>
+        <field name="code">mastercardpagoplux</field>
+        <field name="primary_payment_method_id" eval="ref('payment_method_pagoplux')"/>
+        <field name="sequence">1000</field>
+        <field name="active">False</field>
+        <field name="image" type="base64" file="payment/static/img/mastercard.png"/>
+    </record>
+
+    <record id="payment_method_discover_pagoplux" model="payment.method">
+        <field name="name">Discover Pagoplux</field>
+        <field name="code">discoverpagoplux</field>
+        <field name="primary_payment_method_id" eval="ref('payment_method_pagoplux')"/>
+        <field name="sequence">1000</field>
+        <field name="active">False</field>
+        <field name="image" type="base64" file="payment/static/img/discover.png"/>
+    </record>
+</odoo>
