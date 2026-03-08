@@ -9,9 +9,13 @@
         Realice sus pagos mediante Pagoplux
     """,
     'author': "Pagoplux",
+    'license': 'LGPL-3',
     'website': "https://www.pagoplux.com/",
     
-    'depends': ['payment'],
+    'depends': [
+        'payment', 
+        'l10n_ec', 
+        'l10n_ec_website_sale'],
     'data': [
         'data/payment_method_data.xml',
         'views/payment_pagoplux_provider_view.xml',

@@ -12,7 +12,7 @@ class PaymentPagoPlux(http.Controller):
     _success_url = '/payment/pagoplux/success'
     _cancel_url = '/payment/pagoplux/cancel'
 
-    @http.route(['/payment/pagoplux/success', '/payment/pagoplux/cancel'], type='http', auth='public', csrf=False, method=['POST'])
+    @http.route(['/payment/pagoplux/success', '/payment/pagoplux/cancel'], type='http', auth='public', csrf=False, methods=['POST'])
     def pagoplux_success(self, **kwargs):
         _logger.info('Pagoplux Success Beginning form_feedback with post data %s', pprint.pformat(kwargs))  # debug
         tx_sudo = request.env['payment.transaction'].sudo().search([('reference', '=', kwargs.get('reference'))])
